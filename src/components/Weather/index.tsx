@@ -65,7 +65,7 @@ export default function Weather() {
             placeholder="Type a city"
             value={city}
             onChange={handleCityValue}
-            style={{borderRadius: 20, padding: '10px', width: '300px'}}
+            style={{borderRadius: 20, padding: '10px', width: '300px', marginRight: '5px'}}
           />
           <button 
             type="submit"
@@ -85,7 +85,7 @@ export default function Weather() {
             <h2>{weather.name}, {weather.sys?.country}</h2>
             <p>{weather.main?.temp}°C</p>
             <p>Max: {weather.main?.temp_max}°C      |     Min: {weather.main?.temp_min}°C</p>
-            <p>Weather: {weather.weather?.[0]?.description}</p>
+            <p>Weather: {weather.weather[0].description}</p>
             <p>💧 {weather.main?.humidity}%</p>
             <p>Wind: {weather.wind?.speed} m/s</p>
           </div>
