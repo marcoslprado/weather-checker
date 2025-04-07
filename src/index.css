@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Poppins;
+}
+
+/* Fundo principal (claro)	Azul céu suave	#E0F7FA	Céu claro, sensação de leveza e frescor
+Topo / Navbar	Azul médio	#0288D1	Profundidade, seriedade, lembra o céu ao entardecer
+Botões principais (CTA)	Amarelo solar	#FFD54F	Cor do sol, calor, chama atenção
+Texto principal	Cinza escuro	#333333	Ótima legibilidade sobre fundo claro
+Temperatura quente	Vermelho alaranjado	#FF7043	Representa calor
+Temperatura fria	Azul gelo	#4FC3F7	Representa frio
+Cartões de clima / blocos	Branco com sombra	#FFFFFF	Simples, limpo, com borda ou sombra leve
+Fundo escuro alternativo	Azul noite	#263238	Para modo escuro ou footer, lembra o céu noturno
+Ícones e detalhes	Cinza claro	#B0BEC5	Discreto, moderno, não rouba atenção */

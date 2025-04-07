@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import './Weather.css'
 
 export default function Weather() {
   const [city, setCity] = useState('');
@@ -7,7 +8,6 @@ export default function Weather() {
   const [error, setError] = useState('');
   const apiKey = import.meta.env.VITE_APP_API_KEY;
 
-  // Monitora mudanças no estado weather
   useEffect(() => {
     console.log("Weather data updated:", weather);
   }, [weather]);
@@ -53,23 +53,27 @@ export default function Weather() {
   }
 
   return (
-    <div>
-      <h1>Weather Checker</h1>
+    <div className="weather">
+      <header>
+        <img src="src\assets\weather-color.png" style={{height: '50px', marginBottom: '5px'}}></img>
+        <h1 style={{ margin: '5px' }}>Weather Checker</h1>
+      </header>
       
       <form onSubmit={fetchWeather}>
-        <input
-          type="text"
-          placeholder="Type a city"
-          value={city}
-          onChange={handleCityValue}
-        />
-        <button 
-          type="submit"
-          disabled={loading}
-          style={{ padding: "8px 16px" }}
-        >
-          {loading ? "Searching..." : "Search"}
-        </button>
+          <input
+            type="text"
+            placeholder="Type a city"
+            value={city}
+            onChange={handleCityValue}
+            style={{borderRadius: 20, padding: '10px', width: '300px'}}
+          />
+          <button 
+            type="submit"
+            disabled={loading}
+            style={{ padding: "10px 16px", borderRadius: 20, backgroundColor: '#FFD54F', border: 'none' }}
+          >
+            {loading ? "Searching..." : "Search"}
+          </button>
       </form>
 
       {error && (
@@ -77,14 +81,14 @@ export default function Weather() {
       )}
 
       {weather && (
-        <div>
-          <h2>{weather.name}, {weather.sys?.country}</h2>
-          <p>Current Temperature: {weather.main?.temp}°C</p>
-          <p>Max Temperature: {weather.main?.temp_max}°C      |     Min Temperature: {weather.main?.temp_min}°C</p>
-          <p>Weather: {weather.weather?.[0]?.description}</p>
-          <p>Humidity: {weather.main?.humidity}%</p>
-          <p>Wind: {weather.wind?.speed} m/s</p>
-        </div>
+          <div className="result" style={{border: '1px solid black', borderRadius: '30px', padding: '30px', margin: '30px'}}>
+            <h2>{weather.name}, {weather.sys?.country}</h2>
+            <p>{weather.main?.temp}°C</p>
+            <p>Max: {weather.main?.temp_max}°C      |     Min: {weather.main?.temp_min}°C</p>
+            <p>Weather: {weather.weather?.[0]?.description}</p>
+            <p>💧 {weather.main?.humidity}%</p>
+            <p>Wind: {weather.wind?.speed} m/s</p>
+          </div>
       )}
     </div>
   );
