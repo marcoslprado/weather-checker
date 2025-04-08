@@ -53,6 +53,29 @@ export default function Weather() {
     }
   }
 
+  const manageImage = (description) => {
+    if (description === 'few clouds' || description === 'scattered clouds') {
+      return 'src/assets/few-clouds.png'
+    } else if (description === 'broken clouds' || description === 'overcast clouds') {
+      return 'src/assets/overcast-clouds.png'
+    } else if (description === 'clear sky') {
+      return 'src/assets/clear-sky.png'
+    } else if (description === 'mist' || description === 'smoke' || description === 'haze' || description === 'sand,dust whirls' || description === 'fog' || description === 'sand' || description === 'dust' || description === 'volcanic ash' || description === 'squalls' || description === 'tornado') {
+      return 'src/assets/mist.png'
+    } else if (description.includes('snow') || description.includes('sleet')) {
+      return 'src/assets/snow.png'
+    } else if (description.includes('shower rain')) {
+      return 'src/assets/shower-rain.png'
+    } else if (description.includes('rain')) {
+      return 'src/assets/rain.png'
+    } else if (description.includes('drizzle')) {
+      return 'src/assets/drizzle.png'
+    } else {
+      return 'src/assets/thunderstorm.png'
+    }
+  }
+
+  
 
 
   return (
@@ -87,7 +110,7 @@ export default function Weather() {
           <div className="result" style={{border: '3px solid black', borderRadius: '30px', height: '20rem', width: '22rem', padding: '2rem', margin: '2rem'}}>
             <h2>{weather.name}, {weather.sys?.country}</h2>
             <div className="main-data" style={{display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '2.5rem'}}>
-              <img src={image} style={{height: '100px'}}/>
+              <img src={manageImage(weather.weather[0].description)} style={{height: '100px'}}/>
               <p>{(weather.main?.temp).toFixed(1)}°C</p>
             </div>
             <div className="max-min" style={{display: 'flex', justifyContent: 'space-around', fontSize: '1.5rem', padding: '0.5rem', fontWeight: '500'}}>
@@ -107,6 +130,7 @@ export default function Weather() {
               <p>{weather.main?.humidity}%</p>
               <p>{weather.wind?.speed} m/s</p>
             </div>
+            <p>{weather.weather[0].description}</p>
           </div>
       )}
     </div>
