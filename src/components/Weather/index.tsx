@@ -101,7 +101,7 @@ export default function Weather() {
     <div className="weather">
       <header style={{width: '100%', display: 'flex', justifyContent: 'start'}}>
         <img src="src\assets\weather-color.png" style={{height: '50px', marginBottom: '5px'}}></img>
-        <h1 style={{ margin: '5px' }}>Weather Checker</h1>
+        <h1 style={{ margin: '5px', color: '#FFFFFF' }}>Weather Checker</h1>
       </header>
       
       <form onSubmit={fetchWeather}>
@@ -110,12 +110,12 @@ export default function Weather() {
             placeholder="Type a city"
             value={city}
             onChange={handleCityValue}
-            style={{borderRadius: 20, padding: '10px', width: '300px', marginRight: '5px'}}
+            style={{borderRadius: 20, padding: '10px', width: '30rem', marginRight: '5px', backgroundColor: '#0582ca', color: '#FFFFFF', border: '2px solid transparent', outline: '0'}}
           />
           <button 
             type="submit"
             disabled={loading}
-            style={{ padding: "10px 16px", borderRadius: 20, backgroundColor: '#FFD54F', border: 'none' }}
+            style={{ padding: "10px 16px", borderRadius: 20, backgroundColor: '#006494', border: 'none', color: '#FFFFFF', transition: 'background-color 0.3s ease', cursor: 'pointer', width: '6rem'}}
           >
             {loading ? "Searching..." : "Search"}
           </button>
@@ -126,7 +126,7 @@ export default function Weather() {
       )}
 
       {weather && (
-          <div className="result" style={{border: '3px solid black', borderRadius: '30px', height: '20rem', width: '22rem', padding: '2rem', margin: '2rem'}}>
+          <div className="result" style={{borderRadius: '30px', height: '20rem', width: '22rem', padding: '2rem', margin: '2rem', backgroundColor: '#FFFFFF'}}>
             <h2>{weather.name}, {weather.sys?.country}</h2>
             <div className="main-data" style={{display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '2.5rem'}}>
               <img src={manageImage(weather.weather[0].description)} style={{height: '100px'}}/>
