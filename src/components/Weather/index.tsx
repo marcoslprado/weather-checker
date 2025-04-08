@@ -7,6 +7,7 @@ export default function Weather() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const apiKey = import.meta.env.VITE_APP_API_KEY;
+  const [image, setImage] = useState('src/assets/clear-sky.png')
 
   useEffect(() => {
     console.log("Weather data updated:", weather);
@@ -52,9 +53,11 @@ export default function Weather() {
     }
   }
 
+
+
   return (
     <div className="weather">
-      <header>
+      <header style={{width: '100%', display: 'flex', justifyContent: 'start'}}>
         <img src="src\assets\weather-color.png" style={{height: '50px', marginBottom: '5px'}}></img>
         <h1 style={{ margin: '5px' }}>Weather Checker</h1>
       </header>
@@ -81,13 +84,25 @@ export default function Weather() {
       )}
 
       {weather && (
-          <div className="result" style={{border: '1px solid black', borderRadius: '30px', padding: '30px', margin: '30px'}}>
+          <div className="result" style={{border: '3px solid black', borderRadius: '30px', padding: '2rem', margin: '2rem'}}>
             <h2>{weather.name}, {weather.sys?.country}</h2>
-            <p>{weather.main?.temp}°C</p>
-            <p>Max: {weather.main?.temp_max}°C      |     Min: {weather.main?.temp_min}°C</p>
+            <div className="card-inside" style={{display: 'flex', alignItems: 'center', gap: '2rem', fontSize: '2.5rem'}}>
+              <img src={image} style={{height: '100px'}}/>
+              <p>{(weather.main?.temp).toFixed(1)}°C</p>
+            </div>
+            <div className="max-min" style={{display: 'flex', justifyContent: 'space-around', fontSize: '1.5rem'}}>
+              <p>Max</p>
+              <p>Min</p>
+            </div>
+            <div className="max-min-api" style={{display: 'flex', justifyContent: 'space-around', fontSize: '1.5rem'}}>
+              <p>{(weather.main?.temp_max).toFixed(1)}°C</p>
+              <p>{(weather.main?.temp_min).toFixed(1)}°C</p>
+            </div>
             <p>Weather: {weather.weather[0].description}</p>
-            <p>💧 {weather.main?.humidity}%</p>
-            <p>Wind: {weather.wind?.speed} m/s</p>
+            <div className="general-data" style={{display: 'flex', justifyContent: 'space-around', fontSize: '1.25rem'}}>
+              <p>💧 {weather.main?.humidity}%</p>
+              <p>Wind: {weather.wind?.speed} m/s</p>
+            </div>
           </div>
       )}
     </div>

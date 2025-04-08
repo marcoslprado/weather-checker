@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     font-family: Poppins;
+    overflow-x: hidden;
 }
 
 /* Fundo principal (claro)	Azul céu suave	#E0F7FA	Céu claro, sensação de leveza e frescor
