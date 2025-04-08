@@ -84,13 +84,13 @@ export default function Weather() {
       )}
 
       {weather && (
-          <div className="result" style={{border: '3px solid black', borderRadius: '30px', padding: '2rem', margin: '2rem'}}>
+          <div className="result" style={{border: '3px solid black', borderRadius: '30px', height: '20rem', width: '22rem', padding: '2rem', margin: '2rem'}}>
             <h2>{weather.name}, {weather.sys?.country}</h2>
-            <div className="card-inside" style={{display: 'flex', alignItems: 'center', gap: '2rem', fontSize: '2.5rem'}}>
+            <div className="main-data" style={{display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '2.5rem'}}>
               <img src={image} style={{height: '100px'}}/>
               <p>{(weather.main?.temp).toFixed(1)}°C</p>
             </div>
-            <div className="max-min" style={{display: 'flex', justifyContent: 'space-around', fontSize: '1.5rem'}}>
+            <div className="max-min" style={{display: 'flex', justifyContent: 'space-around', fontSize: '1.5rem', padding: '0.5rem', fontWeight: '500'}}>
               <p>Max</p>
               <p>Min</p>
             </div>
@@ -98,10 +98,14 @@ export default function Weather() {
               <p>{(weather.main?.temp_max).toFixed(1)}°C</p>
               <p>{(weather.main?.temp_min).toFixed(1)}°C</p>
             </div>
-            <p>Weather: {weather.weather[0].description}</p>
-            <div className="general-data" style={{display: 'flex', justifyContent: 'space-around', fontSize: '1.25rem'}}>
-              <p>💧 {weather.main?.humidity}%</p>
-              <p>Wind: {weather.wind?.speed} m/s</p>
+            
+            <div className="humidity-wind" style={{display: 'flex', justifyContent: 'space-around', fontSize: '1.5rem', marginRight: '1rem', padding: '0.5rem', fontWeight: '500' }}>
+              <p>Humidity</p>
+              <p>Wind</p>
+            </div>
+            <div className="humidity-wind-api" style={{display: 'flex', justifyContent: 'space-around', fontSize: '1.5rem', marginLeft: '1rem', gap: '0.5rem'}}>
+              <p>{weather.main?.humidity}%</p>
+              <p>{weather.wind?.speed} m/s</p>
             </div>
           </div>
       )}
