@@ -1,9 +1,28 @@
 import { useState, useEffect } from "react";
 import './Weather.css'
 
+interface WeatherData {
+  name: string;
+  sys: {
+    country: string;
+  };
+  weather: {
+    description: string;
+  }[];
+  main: {
+    temp: number;
+    temp_max: number;
+    temp_min: number;
+    humidity: number;
+  };
+  wind: {
+    speed: number;
+  };
+}
+
 export default function Weather() {
   const [city, setCity] = useState('');
-  const [weather, setWeather] = useState(null);
+  const [weather, setWeather] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const apiKey = import.meta.env.VITE_APP_API_KEY;
@@ -13,11 +32,11 @@ export default function Weather() {
     console.log("Weather data updated:", weather);
   }, [weather]);
 
-  const handleCityValue = (event) => {
+  const handleCityValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCity(event.target.value);
   }
 
-  async function fetchWeather(event) {
+  async function fetchWeather(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault(); 
     if (city === '') {
       setError("Please enter a city");
@@ -45,7 +64,7 @@ export default function Weather() {
       const weatherData = await weatherResponse.json();
 
       setWeather(weatherData);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Fetch error:", error);
       setError(error.message || "Failed to fetch weather data");
     } finally {
@@ -53,7 +72,7 @@ export default function Weather() {
     }
   }
 
-  const manageImage = (description) => {
+  const manageImage = (description: string) => {
     if (description === 'few clouds' || description === 'scattered clouds') {
       return 'src/assets/few-clouds.png'
     } else if (description === 'broken clouds' || description === 'overcast clouds') {
@@ -130,7 +149,6 @@ export default function Weather() {
               <p>{weather.main?.humidity}%</p>
               <p>{weather.wind?.speed} m/s</p>
             </div>
-            <p>{weather.weather[0].description}</p>
           </div>
       )}
     </div>
