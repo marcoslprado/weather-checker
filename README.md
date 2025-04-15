@@ -4,6 +4,14 @@ A React application that displays real-time weather data for any city worldwide.
 
 ---
 
+## 🌍 Live Demo
+
+👉 [**Click here to view the deployed app**](https://v0-github-weather-checker.vercel.app/)  
+[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel&style=for-the-badge)](https://your-vercel-app.vercel.app)
+
+---
+
+
 ## ✨ Features
 
 - 🔍 Search by city name  
