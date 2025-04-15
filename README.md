@@ -1,6 +1,6 @@
 # 🌦️ Weather Checker
 
-A responsive React application that displays real-time weather data for any city worldwide.  
+A React application that displays real-time weather data for any city worldwide.  
 
 ---
 
@@ -9,8 +9,7 @@ A responsive React application that displays real-time weather data for any city
 - 🔍 Search by city name  
 - 🌡️ Display current temperature (Celsius/Fahrenheit)  
 - 💧 Humidity and wind speed indicators  
-- ☀️🌧️ Dynamic weather condition icons  
-- 📱 Mobile-friendly responsive design  
+- ☀️🌧️ Dynamic weather condition icons   
 - 🛠️ Error handling for invalid locations  
 
 ---
